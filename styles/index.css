@@ -310,6 +310,7 @@ hr {
 .total__notes {
   font-weight: 400;
   font-size: 0.75em;
+  max-width: 50%;
 }
 .total {
   display: flex;
