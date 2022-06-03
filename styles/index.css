@@ -88,16 +88,15 @@ select {
 html {
   font-family: var(--ff-main);
   font-size: 16px;
-}
-
-main {
-  display: grid;
-  place-items: center;
-  min-height: 100vh;
-  /* align-items: center; */
   background-color: var(--clr-black-background);
 }
 
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
 h1 {
   color: var(--clr-black-light);
   font-weight: 800;
@@ -247,7 +246,8 @@ hr {
 /* ---------------------- */
 
 .card {
-  min-width: 38rem;
+  /* min-width: 38rem; */
+  width: min(90%, 38rem);
   background-color: var(--clr-white);
   border-radius: 0.5em;
 }
@@ -257,7 +257,6 @@ hr {
   text-align: center;
   background-color: var(--clr-white-very-light);
   color: var(--clr-black-light);
-
   border-radius: 0.5em;
 }
 
@@ -337,11 +336,25 @@ hr {
   text-decoration: none;
   color: hsl(228, 45%, 44%);
 }
+footer span {
+  color: var(--clr-grey-desaturated);
+}
 
 /* ---------------------- */
 /* Media queries          */
 /* ---------------------- */
 
-/* @media (min-width: 520px) {
-  
-} */
+@media (max-width: 650px) {
+  .title {
+    padding: 3em 1em;
+  }
+
+  .tasks__buttons {
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 1em;
+    justify-items: center;
+  }
+  .btn {
+    min-width: 90%;
+  }
+}
