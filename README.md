@@ -25,7 +25,7 @@ Users should be able to:
 - Choose which tasks they want to receive
 - Get charged just once for same service
 - Always see updated services' list with single cost
-- Add the ability to remove tasks one by one
+- Remove tasks one by one
 - Get automated total amount cost
 - Reset the whole demand clicking on "Send invoice" button
 - See hover states for interactive elements
