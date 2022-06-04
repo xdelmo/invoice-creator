@@ -55,10 +55,12 @@ function render(services) {
     cost = getCost(services[i]);
     totalCost += cost;
     // Use "template string" with backtick to concatenate directly HTML elements and update them
+    // IMPORTANT
+    // Add onclick="removeService(${i})" to be able to call removeService() function with corrisponding array item's index to delete
     listItems += ` <div class="service__chosen">
       <div class="service__package">
           <h3 class="service__title">${services[i]}</h3>
-          <p class="btn-remove" id="btn-remove${i}">Remove</p>
+          <p class="btn-remove" onclick="removeService(${i})">Remove</p>
       </div>
       <h3 class="service__cost"><span class="currency">$</span>${cost}</h3>
   </div>`;
@@ -103,5 +105,15 @@ function reset() {
   // Clear totalCost, myServices and the DOM calling render()
   totalCost = 0;
   myServices = [];
+  render(myServices);
+}
+
+// Create a function removeService() which deletes from myService, tasks with corrisponding index
+function removeService(index) {
+  // IMPORTANT
+  // slice(start, end(NOT INCLUDED)) creates an array with the indexes it receives. We modify myServices array, from the start to the index we want to remove, and concatenate same array from the first position following the one we removed to the end of the array
+  myServices = myServices
+    .slice(0, index)
+    .concat(myServices.slice(index + 1, myServices.length));
   render(myServices);
 }

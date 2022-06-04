@@ -64,12 +64,36 @@ function getCost(services) {
 }
 ```
 
+- How to dynamically remove items from array
+
+```js
+// Add onclick="removeService(${i})" to be able to call removeService() function with corrisponding array item's index to delete
+listItems += ` <div class="service__chosen">
+      <div class="service__package">
+          <h3 class="service__title">${services[i]}</h3>
+          <p class="btn-remove" onclick="removeService(${i})">Remove</p>
+      </div>
+      <h3 class="service__cost"><span class="currency">$</span>${cost}</h3>
+  </div>`;
+```
+
+```js
+// Create a function removeService() which deletes from myService, tasks with corrisponding index
+function removeService(index) {
+  // slice(start, end(NOT INCLUDED)) creates an array with the indexes it receives. We modify myServices array, from the start to the index we want to remove, and concatenate same array from the first position following the one we removed to the end of the array
+  myServices = myServices
+    .slice(0, index)
+    .concat(myServices.slice(index + 1, myServices.length));
+  render(myServices);
+}
+```
+
 ### Continued development
 
 I'd like to:
 
 - Use localStorage's browser to save tasks
-- Add the ability to remove tasks one by one
+- ~~Add the ability to remove tasks one by one~~
 
 ### Useful resources
 
@@ -77,6 +101,7 @@ I'd like to:
 - [W3Schools](https://www.w3schools.com/jsref/jsref_includes_array.asp) - How to use includes() method
 - [GoMakeThings](https://gomakethings.com/converting-strings-to-numbers-with-vanilla-javascript/) - Converting strings to numbers with vanilla JavaScript
 - [BoddyHadz](https://bobbyhadz.com/blog/javascript-get-substring-after-specific-character) - Get the Substring after a specific Character in JavaScript
+- [Flavio Copes](https://flaviocopes.com/how-to-remove-item-from-array/) - How to remove items from array
 
 ## Author
 
